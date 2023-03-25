@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+
+<head th:replace="~{fragments/head :: head(~{::title})}">
+<meta charset="UTF-8">
+<title>Erreur</title>
+</head>
+<style>
+body {
+	background-color: #f1f1f1;
+}
+
+.error-template {
+	text-align: center;
+	padding-top: 5%;
+}
+
+.error-details {
+	font-size: 22px;
+	font-weight: bold;
+	margin-top: 10%;
+}
+
+.error-actions {
+	margin-top: 10%;
+}
+
+.error-actions .btn {
+	margin-right: 10px;
+}
+
+.btn-primary {
+	background-color: #343a40;
+	border-color: #343a40;
+}
+
+.btn-primary:hover {
+	background-color: #23272b;
+	border-color: #23272b;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="error-template">
+					<h1>Oops!</h1>
+					<div class="error-details">Une erreure s'est produite :-(</div>
+					<div class="error-actions">
+						<a href="/" class="btn btn-primary btn-lg">Retourner à l'accueil</a>
+						<a href="#" class="btn btn-default btn-lg">Contacter le support</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>

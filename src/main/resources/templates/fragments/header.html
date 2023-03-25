@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Header</title>
+</head>
+
+<body>
+	<header class="sticky-top w-100" th:fragment="header">
+		<nav
+			class="navbar navbar-expand-lg bg-light d-flex justify-content-between align-items-center p-3 shadow-sm">
+			<div class="navbar-brand">
+				<img src="https://www.sencampus.com/app/uploads/esmt.jpg" id="logo"
+					alt="logo" width="50" />
+				<span class="d-none d-sm-inline">Ecole Supérieure Multinationale des
+					Télécommunications </span>
+			</div>
+			<div class="d-flex justify-content-end" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+							role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false">
+							<span class="iconify" data-icon="mdi:account-circle" data-width="24"
+								data-height="24"></span>
+						</a>
+						<div class="dropdown-menu dropdown-menu-end"
+							aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" th:href="@{/parametre}">
+								<span class="iconify" data-icon="mdi:cog" data-width="24"
+									data-height="24"></span>
+								Paramètres
+							</a>
+							<hr class="dropdown-divider">
+							<a class="dropdown-item" th:href="@{/logout}">
+								<span class="iconify" data-icon="mdi:logout" style="color: red;"
+									data-width="24" data-height="24"></span>
+								Déconnexion
+							</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+body {
+	font-family: Arial, sans-serif;
+}
+
+.login-container {
+	margin: 50px auto;
+	padding: 20px;
+	max-width: 500px;
+	/* border: 1px solid #CCCCCC;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); */
+}
+
+.sidebar {
+	background-color: #F5F5F5;
+/* 	123d56
+ */
+ }
+
+h1, #h1-header {
+	color: #0B3954;
+}
+
+navbar{
+	background-color: #174b54;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+}
+
+label {
+	color: #0B3954;
+}
+
+#logo {
+	border-radius: 50%;
+}
+
+.size-select {
+	width: fit-content;
+	color: #495057;
+	/* vertical-align: middle;
+  padding: 6px 12px; */
+	border: 1px solid #ced4da;
+	border-radius: 0.25rem;
+}
+
+.table {
+    table-layout: fixed;
+}

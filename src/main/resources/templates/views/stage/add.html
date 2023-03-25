@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html th:replace="~{layout/app :: layout(~{::title}, ~{::body})}"
+	xmlns:th="https://www.thymeleaf.org" lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Ajout d'un stage</title>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div th:if="${message != null || error != null }"
+			class="d-flex justify-content-center ">
+			<div class="alert alert-dismissible fade show text-center message"
+				th:classappend="${error != null} ? 'alert-danger': (${message != null }? 'alert-success')"
+				role="alert">
+				<span th:text="${message!=null}? ${message} : (${error != null }? ${error})"></span>
+				<button type="button" class="btn-close" data-bs-dismiss="alert"
+					aria-label="Close"></button>
+
+			</div>
+		</div>
+		<div class="d-flex align-items-center justify-content-center">
+			<div class="card border rounded-3 shadow-sm mb-4" style="min-width: 50%">
+				<div class="card-header">
+					<h4 class="px-2 bg-tertiary rounded text-primary">Ajout d'un stage</h4>
+				</div>
+				<div class="card-body">
+					<div class="px-2 align-items-center justify-content-center">
+						<form th:action="@{/stage/save}" method="post" th:object="${stage}">
+							<div>
+								<label class="my-1" for="theme">Theme</label>
+								<div>
+									<textarea class="form-control" rows="3" id="theme" th:field="*{theme}" required
+										maxlength="255"></textarea>
+								</div>
+								<small class="text-danger" th:if="${#fields.hasErrors('theme')}" th:errors="*{theme}"></small>
+							</div>
+							<div class="py-2">
+								<button class="btn btn-primary" type="submit">Enregistrer</button>
+								<a class="btn btn-danger" th:href="@{/stage}">Annuler</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

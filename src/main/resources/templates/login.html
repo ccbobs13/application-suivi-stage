@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+
+<head th:replace="~{fragments/head :: head(~{::title})}">
+<title>Page de connexion</title>
+</head>
+
+<body
+	style="background-color: #f5f5f5; /* background: repeat center/35% url('/images/Curseur.png'); */">
+
+	<div class="login-container">
+		<div class="card rounded-3 shadow-sm">
+			<div class="card-header">
+				<span id="h1-header" class="fs-3 my-2">Connexion</span>
+			</div>
+			<div class="card-body">
+				<div class="im"></div>
+				<div th:if="${param.error}"
+					class="alert alert-danger alert-dismissible fade show text-center message"
+					role="alert">
+					<span>Nom d'utilisateur ou mot de passe invalide.</span>
+					<button type="button" class="btn-close" data-bs-dismiss="alert"
+						aria-label="Close"></button>
+
+				</div>
+				<div th:if="${param.logout}"
+					class="alert alert-success alert-dismissible fade show text-center message"
+					role="alert">
+					<span>Vous avez été déconnecté.</span>
+					<button type="button" class="btn-close" data-bs-dismiss="alert"
+						aria-label="Close"></button>
+
+				</div>
+				<form th:action="@{/login}" method="post">
+					<label class="my-1" for="username">Nom d'utilisateur</label>
+					<input class="form-control" type="text" id="username" name="username"
+						required>
+
+					<label class="my-1" for="password">Mot de passe</label>
+					<input class="form-control" type="password" id="password" name="password"
+						required>
+
+					<button class="btn btn-primary my-4 fs-5" type="submit">Se connecter</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>

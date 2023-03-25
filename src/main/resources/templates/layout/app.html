@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html th:fragment="layout (title, content)" xmlns:th="http://www.thymeleaf.org"
+	lang="en">
+<head th:replace="~{/../fragments/head :: head(~{::title})}" />
+<body>
+	<div class="container-fluid">
+		<div class="row flex-nowrap mynav">
+			<div th:replace="~{/../fragments/sidebar :: sidebar}"></div>
+			<div class="col p-0 d-flex flex-column min-vh-100">
+				<div th:replace="~{/../fragments/header :: header}"></div>
+				<main class="flex-shrink-0">
+					<div class="py-3" th:insert="${content}"></div>
+				</main>
+				<div th:replace="~{/../fragments/footer :: footer}"></div>
+			</div>
+		</div>
+	</div>
+	<script th:src="@{/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js}"></script>
+	<script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+	<script th:src='@{/js/main.js}'></script>
+</body>
+</html>

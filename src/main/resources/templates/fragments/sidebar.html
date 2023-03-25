@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Sidebar</title>
+</head>
+
+<body>
+	<div th:fragment="sidebar"
+		class="sidebar col-auto  col-md-3 col-xl-2 px-sm-2 px-0 min-vh-100 ">
+		<div class="text-center justify-content-center">
+			<img th:src="@{/images/avataaars.png}" alt="Avatar" class="d-block mx-auto"
+				width="100">
+			<span id="h1-header" class="fs-5 text-wrap" sec:authentication="name">Email</span>
+		</div>
+		<hr class="hr">
+		<ul
+			class="nav nav-pills nav-fill justify-content-start flex-column my-3 mb-sm-auto mb-0  justify-content-sm-start"
+			id="mynavlinks">
+			<li class="nav-item">
+				<a class="nav-link d-flex align-items-center align-items-sm-start"
+					th:href="@{/}" th:classappend="${activePage == 'accueil'} ? 'active'">
+					<span class="iconify me-3" data-icon="mdi:home" data-width="24"
+						data-height="24"></span>
+					<span class="d-none d-sm-inline">Accueil</span>
+				</a>
+
+			</li>
+			<li class="nav-item">
+				<a class="nav-link d-flex  align-items-center" th:href="@{/etudiant}"
+					th:classappend="${activePage == 'etudiant'} ? 'active'">
+					<span class="iconify me-3" data-icon="mdi:account-school" data-width="24"
+						data-height="24"></span>
+					<span class="d-none d-sm-inline">Etudiants</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link d-flex align-items-center" th:href="@{/encadreur}"
+					th:classappend="${activePage == 'encadreur'} ? 'active'">
+					<span class="iconify me-3" data-icon="mdi:human-male-board" data-width="24"
+						data-height="24"></span>
+					<span class="d-none d-sm-inline">Encadreurs</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link d-flex align-items-center" th:href="@{/stage}"
+					th:classappend="${activePage == 'stage'} ? 'active'">
+					<span class="iconify me-3" data-icon="mdi:book-open-page-variant"
+						data-width="24" data-height="24"></span>
+					<span class="d-none d-sm-inline">Stages</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</body>
+
+</html>

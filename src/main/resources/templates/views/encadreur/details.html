@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html th:replace="~{layout/app :: layout(~{::title}, ~{::body})}"
+	xmlns:th="https://www.thymeleaf.org" lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Encadreur</title>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<a class="btn btn-outline-primary" th:href="@{/encadreur}">
+			<span class="iconify" data-icon="mdi:arrow-left-circle" data-width="24"
+				data-heigth="24"></span>
+			Liste des encadreurs
+		</a>
+
+		<div th:if="${message != null || error != null }"
+			class="d-flex justify-content-center ">
+			<div class="alert alert-dismissible fade show text-center message"
+				th:classappend="${error != null} ? 'alert-danger': (${message != null }? 'alert-success')"
+				role="alert">
+				<span th:text="${message!=null}? ${message} : (${error != null }? ${error})"></span>
+				<button type="button" class="btn-close" data-bs-dismiss="alert"
+					aria-label="Close"></button>
+
+			</div>
+		</div>
+		<div class="py-3">
+			<div class="card border bg-body-tertiary">
+				<div class="card-body">
+					<div class="row d-flex">
+						<div class="col-6">
+							<span class="fs-5">Nom: [[|${encadreur.nom} ${encadreur.prenoms}
+								|]]</span>
+						</div>
+						<div class="col-6">
+							<span class="fs-5">Email: [[${encadreur.email}]]</span>
+						</div>
+					</div>
+					<div class="row d-flex align-items-start">
+						<div class="col">
+							<span class="fs-5">Grade: [[${encadreur.grade} ]]</span>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+		<h3 id="h1-header">Liste des étudiants supervisés par cet encadreur</h3>
+		<div class="text-danger" th:if="${encadreur.etudiants.size() <= 0}">Aucun
+			etudiant</div>
+		<table th:if="${encadreur.etudiants.size()}"
+			class="table table-responsive-xl table-striped table-bordered align-middle">
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Prenoms</th>
+					<th>Email</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody class="table-group-divider">
+				<tr th:each="etudiant: ${encadreur.etudiants}">
+					<td class="text-truncate" th:text="${etudiant.nom}" />
+					<td class="text-truncate" th:text="${etudiant.prenoms}" />
+					<td class="text-break" th:text="${etudiant.email}" />
+					<td>
+						<a id="deleteButton" class="btn btn-danger btn-sm"
+							th:href="@{/encadreur/{id}/etudiants/remove/{idEtu}(id = ${encadreur.id}, idEtu = ${etudiant.id})}">
+							Dissocier </a>
+					</td>
+				</tr>
+			</tbody>
+
+		</table>
+		<div th:replace="~{fragments/confirm-modal :: confirm-modal}"></div>
+	</div>
+	<script th:src="@{/js/confirm-dissociate-modal.js}"></script>
+</body>
+
+</html>
